@@ -21,7 +21,9 @@
   },
   "dependencies": {
     "ember-cli-babel": "^6.3.0",
-    "ember-cli-htmlbars": "^2.0.1"
+    "ember-cli-htmlbars": "^2.0.1",
+    "ember-cp-validations": "^3.5.1",
+    "ember-truth-helpers": "^2.0.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
