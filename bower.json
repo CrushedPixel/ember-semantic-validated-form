@@ -1,0 +1,6 @@
+{
+  "name": "semantic-validated-form",
+  "dependencies": {
+    "semantic-ui": "^2.2.13"
+  }
+}

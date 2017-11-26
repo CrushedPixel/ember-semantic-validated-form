@@ -1,0 +1,15 @@
+{{yield
+  (hash
+    showError=showError
+    control=(
+      component "semantic-validated-form-control"
+      model=model
+      showError=showError
+    )
+    button=(
+      component "semantic-validated-form-button"
+      submit=(action "submit")
+      enabled=isValid
+    )
+  )
+}}

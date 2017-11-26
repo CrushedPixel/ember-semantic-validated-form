@@ -1,0 +1,14 @@
+{{#unless (eq undefined label)}}
+  <label>{{label}}</label>
+{{/unless}}
+{{#ui-popup
+  class="popup"
+  onShow=(action "onShowPopup")
+  content=errorPopupMessage}}
+  {{yield
+    (hash
+      focus-out=(action "onFocusOut")
+      value=(mut (get model property))
+    )
+  }}
+{{/ui-popup}}
