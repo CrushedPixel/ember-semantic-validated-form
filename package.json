@@ -1,19 +1,23 @@
 {
-  "name": "semantic-validated-form",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "name": "ember-semantic-validated-form",
+  "version": "0.1.0",
+  "description": "Ember form component with ember-cp-validations for semantic-ui-ember.",
   "keywords": [
+    "ember",
     "ember-addon",
     "semantic-ui",
-    "form-validation"
+    "form-validation",
+    "ember-cp-validations"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "crushedpixel",
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/CrushedPixel/ember-semantic-validated-form"
+  },
   "scripts": {
     "build": "ember build",
     "start": "ember server",
@@ -23,7 +27,8 @@
     "ember-cli-babel": "^6.3.0",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cp-validations": "^3.5.1",
-    "ember-truth-helpers": "^2.0.0"
+    "ember-truth-helpers": "^2.0.0",
+    "semantic-ui-ember": "^2.0.1"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -42,13 +47,10 @@
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.15.0",
-    "loader.js": "^4.2.3",
-    "semantic-ui-ember": "^2.0.1"
+    "loader.js": "^4.2.3"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
   },
-  "ember-addon": {
-    "configPath": "tests/dummy/config"
-  }
+  "ember-addon": {}
 }
