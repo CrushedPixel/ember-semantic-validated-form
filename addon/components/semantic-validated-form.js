@@ -9,6 +9,9 @@ export default Ember.Component.extend({
 
   tagName: '',
 
+  // whether pressing the enter key should try to submit the form
+  submitOnEnter: true,
+
   // action to be called when the model was successfully validated
   onSuccess: null,
 
@@ -19,22 +22,33 @@ export default Ember.Component.extend({
 
   isValid: Ember.computed.alias('model.validations.isValid'),
 
-  actions: {
-    async submit() {
-      if (this.get('isValid')) {
-        const onSuccess = this.get('onSuccess');
-        if (!onSuccess) {
-          throw new Error('semantic-validated-form: onSuccess must be set');
-        }
-        onSuccess();
-      } else {
-        this.set('showError', true);
+  // ember event handler
+  keyDown(event) {
+    if (this.get('submitOnEnter') && event.keyCode === 13) {
+      this._onSubmit()
+    }
+  },
 
-        const onFailure = this.get('onFailure');
-        if (onFailure) {
-          onFailure();
-        }
+  _onSubmit() {
+    if (this.get('isValid')) {
+      const onSuccess = this.get('onSuccess');
+      if (!onSuccess) {
+        throw new Error('semantic-validated-form: onSuccess must be set');
       }
+      onSuccess();
+    } else {
+      this.set('showError', true);
+
+      const onFailure = this.get('onFailure');
+      if (onFailure) {
+        onFailure();
+      }
+    }
+  },
+
+  actions: {
+    submit() {
+      this._onSubmit();
     }
   }
 
