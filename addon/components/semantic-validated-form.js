@@ -4,10 +4,10 @@ import layout from '../templates/components/semantic-validated-form';
 export default Ember.Component.extend({
   layout,
 
+  tagName: 'form',
+
   // the model to validate. set this in template
   model: null,
-
-  tagName: '',
 
   // whether pressing the enter key should try to submit the form
   submitOnEnter: true,

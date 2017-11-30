@@ -94,61 +94,60 @@ export default Ember.Component.extend({
 {{!templates/components/signup-form.hbs}}
 <h1 class="ui top attached header">Create Account</h1>
 {{#semantic-validated-form
+  class="ui bottom attached form segment"
   model=signupModel
   onSuccess=(action "signup")
 as |form|}}
-  <form class="ui bottom attached form segment">
-    {{#form.control
-      class="required"
-      property="username"
-      label="Username"
-    as |control|}}
-      {{input
-        value=control.value
-        placeholder="Enter Username"
-        maxlength=20
-        focus-out=control.focus-out
-      }}
-    {{/form.control}}
-    {{#form.control
-      class="required"
-      property="email"
-      label="E-mail"
-    as |control|}}
-      {{input
-        value=control.value
-        placeholder="Enter E-Mail address"
-        focus-out=control.focus-out
-      }}
-    {{/form.control}}
-    {{#form.control
-      class="required"
-      property="password"
-      label="Password"
-    as |control|}}
-      {{input
-        value=control.value
-        placeholder="Enter Password"
-        focus-out=control.focus-out
-        type="password"
-      }}
-    {{/form.control}}
-    {{#form.control
-      class="required"
-      property="passwordConfirmation"
-      label="Confirm Password"
-    as |control|}}
-      {{input
-        value=control.value
-        placeholder="Repeat Password"
-        focus-out=control.focus-out
-        type="password"
-      }}
-    {{/form.control}}
-    {{#form.button class="fluid"}}
-      Sign up
-    {{/form.button}}
-  </form>
+  {{#form.control
+    class="required"
+    property="username"
+    label="Username"
+  as |control|}}
+    {{input
+      value=control.value
+      placeholder="Enter Username"
+      maxlength=20
+      focus-out=control.focus-out
+    }}
+  {{/form.control}}
+  {{#form.control
+    class="required"
+    property="email"
+    label="E-mail"
+  as |control|}}
+    {{input
+      value=control.value
+      placeholder="Enter E-Mail address"
+      focus-out=control.focus-out
+    }}
+  {{/form.control}}
+  {{#form.control
+    class="required"
+    property="password"
+    label="Password"
+  as |control|}}
+    {{input
+      value=control.value
+      placeholder="Enter Password"
+      focus-out=control.focus-out
+      type="password"
+    }}
+  {{/form.control}}
+  {{#form.control
+    class="required"
+    property="passwordConfirmation"
+    label="Confirm Password"
+  as |control|}}
+    {{input
+      value=control.value
+      placeholder="Repeat Password"
+      focus-out=control.focus-out
+      type="password"
+    }}
+  {{/form.control}}
+  {{#form.button class="fluid"}}
+    Sign up
+  {{/form.button}}
 {{/semantic-validated-form}}
 ```
 
