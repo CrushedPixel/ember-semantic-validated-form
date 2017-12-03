@@ -1,6 +1,6 @@
 {
   "name": "ember-semantic-validated-form",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Ember form component with ember-cp-validations for semantic-ui-ember.",
   "keywords": [
     "ember",
