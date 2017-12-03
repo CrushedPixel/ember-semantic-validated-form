@@ -1,14 +1,14 @@
 {{#unless (eq undefined label)}}
   <label>{{label}}</label>
 {{/unless}}
-{{#ui-popup
-  class="popup"
-  onShow=(action "onShowPopup")
-  content=errorPopupMessage}}
+<div class="ui custom popup hidden" id={{popupId}}>
+  {{popupMessage}}
+</div>
+<div class="popup-trigger">
   {{yield
     (hash
       focus-out=(action "onFocusOut")
       value=(mut (get model property))
     )
   }}
-{{/ui-popup}}
+</div>
