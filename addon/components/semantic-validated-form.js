@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   layout,
 
   tagName: 'form',
+  classNames: 'ui form',
 
   // the model to validate. set this in template
   model: null,
