@@ -48,7 +48,11 @@ export default Ember.Component.extend({
       if (!p.popup('exists')) {
         p.popup({
           popup: `#${this.get('popupId')}`,
-          onShow: () => (this.get('displayError') && this.get('hasError'))
+          onShow: () => {
+            // if displayError is undefined, the result of the && expression is undefined as well,
+            // causing the popup to be displayed. therefore, ensure the result of the expression is true
+            return (this.get('displayError') && this.get('hasError')) === true
+          }
         });
       }
 
