@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 
   classNameBindings: ['outerClass'],
 
-  outerClass: Ember.computed('displayError', function() {
+  outerClass: Ember.computed('shouldDisplayError', function() {
     return this.get('displayError') ? 'field error' : 'field';
   }),
 
@@ -22,6 +22,12 @@ export default Ember.Component.extend({
   popupMessage: undefined,
   popupId: Ember.computed(EmberUUID.v4),
 
+  displayError: Ember.computed('shouldDisplayError', 'hasError', function() {
+    // if shouldDisplayError is undefined, the result of the && expression is undefined as well,
+    // causing the popup to be displayed. therefore, ensure the result of the expression is true
+    return (this.get('shouldDisplayError') && this.get('hasError')) === true
+  }),
+
   init() {
     this._super(...arguments);
 
@@ -30,7 +36,8 @@ export default Ember.Component.extend({
       throw new Error('semantic-validated-form: \'property\' must be set upon initialization');
     }
 
-    this.displayError = Ember.computed('showError', 'focusLeft', `model.validations.attrs.${property}.isInvalid`,
+    // shouldDisplayError is whether an error should be displayed if present
+    this.shouldDisplayError = Ember.computed('showError', 'focusLeft', `model.validations.attrs.${property}.isInvalid`,
       function() {
         const invalid = this.get(`model.validations.attrs.${property}.isInvalid`);
         return this.get('showError') || ((this.get('focusLeft') || this.get('wasValid')) && invalid);
@@ -48,11 +55,7 @@ export default Ember.Component.extend({
       if (!p.popup('exists')) {
         p.popup({
           popup: `#${this.get('popupId')}`,
-          onShow: () => {
-            // if displayError is undefined, the result of the && expression is undefined as well,
-            // causing the popup to be displayed. therefore, ensure the result of the expression is true
-            return (this.get('displayError') && this.get('hasError')) === true
-          }
+          onShow: () => this.get('displayError')
         });
       }
 
@@ -60,7 +63,7 @@ export default Ember.Component.extend({
       this.set('hasError', hasError);
 
       if (hasError) {
-        if (this.get('displayError')) {
+        if (this.get('shouldDisplayError')) {
           p.popup('show');
         }
 
