@@ -1,6 +1,11 @@
-{{#unless (eq undefined label)}}
-  <label>{{label}}</label>
-{{/unless}}
+{{#if (or label icon)}}
+  <label>
+    {{#if icon}}
+      <i class={{concat icon " icon"}}></i>
+    {{/if}}
+    {{label}}
+  </label>
+{{/if}}
 <div class="ui custom popup hidden" id={{popupId}}>
   {{popupMessage}}
 </div>
